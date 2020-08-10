@@ -13,11 +13,12 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
 
-        if message.content.startswith('team'):
+        if message.content.startswith('test'):
             try:
                 number_of_teams = int(message.content.split(" ")[1])
             except:
                 await message.channel.send("invalid error. \"team [number of teams]\"")
+                return
             
             # チームリスト作成
             teams = []
@@ -26,7 +27,12 @@ class MyClient(discord.Client):
                 teams.append(array)
 
             # チャンネルのメンバー取得
-            members = message.channel.members
+            members = []
+            for member in message.channel.members:
+                # オフラインのメンバー以外を対象にする
+                if str(member.status) != "offline":
+                    members.append(member)
+
             # メンバーをシャッフル
             random.shuffle(members)
             
@@ -59,6 +65,7 @@ class MyClient(discord.Client):
                 team_counter = team_counter + 1 
 
             await message.channel.send(send_message)
+            return
 
 client = MyClient()
 client.run(token)
