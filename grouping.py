@@ -14,7 +14,10 @@ class MyClient(discord.Client):
             return
 
         if message.content.startswith('team'):
-            number_of_teams = int(message.content.split(" ")[1])
+            try:
+                number_of_teams = int(message.content.split(" ")[1])
+            except:
+                await message.channel.send("invalid error. \"team [number of teams]\"")
             
             # チームリスト作成
             teams = []
