@@ -1,0 +1,2 @@
+# discord_bot_grouping
+discordでグループ分けをするbot
