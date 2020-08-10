@@ -1,1 +1,1 @@
-discordbot: python3 grouping.py
+bot: python3 grouping.py
