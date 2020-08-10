@@ -13,7 +13,7 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
 
-        if message.content.startswith('test'):
+        if message.content.startswith('team'):
             try:
                 number_of_teams = int(message.content.split(" ")[1])
             except:
